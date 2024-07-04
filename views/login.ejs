@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gully cricket scorer</title>
+</head>
+<body>
+    <form action="game" method="post">
+        <h3>Teams</h3>
+        <input required type="text" name="team1" id="" placeholder="host name">
+        <input required type="text" name="team2" id="" placeholder="visitor name">
+
+        <h3>Toss won by?</h3>
+        <input required id="r1" type="radio" name="forToss" value="host">
+        <label for="r1">Host</label>
+        <input required type="radio" name="forToss" value="visitor" id="r2">
+        <label for="r2">Vistor</label>
+
+        <h3>Opted to?</h3>
+        <input required id="r3" type="radio" name="opted" value="bat">
+        <label for="r3">Bat</label>
+        <input required type="radio" name="opted" value="bowl" id="r4">
+        <label for="r4">Bowl</label>
+
+        <h3>Overs?</h3>
+        <input required type="text" name="overs" id="" placeholder="10">
+        <h3>Number of players in each team ?</h3>
+        <input required type="text" name="players" id="" placeholder="11">
+        <br><br>
+        <input type="submit" value="Start match">
+    </form>
+</body>
+</html>
