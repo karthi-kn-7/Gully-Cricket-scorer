@@ -18,10 +18,11 @@ var firstInningsDone=0;
 var totalfacedball=0;
 var firstbatting;
 var target=0;
+var secondInningsDone=0;
 const __dirname=dirname(fileURLToPath(import.meta.url));
 var noOfplayers,toss,opted,overs,team1,team2,team1player,team2player,team1score=0,team2score=0;
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(join(__dirname, 'public')));
+app.use(express.static("public"));
 var secondInnings;
 var currentscore=0,extrasScore=0;
 app.post("/secgame",(req,res)=>{
@@ -36,7 +37,7 @@ app.post("/secgame",(req,res)=>{
         correctBall=0;
         totalfacedball=0;
         wicket=0;
-        var secondInningsDone=0;
+        secondInningsDone=0;
         extrasScore=0;
     }
     
@@ -75,7 +76,7 @@ app.post("/secgame",(req,res)=>{
             let te=target-score;
             let tb=totalball-totalfacedball;
             targetMessage=team2 + " needs "+te+ " from "+tb;
-        }else if(firstbatting=="vistor"){
+        }else if(firstbatting=="visitor"){
             let te=target-score;
             let tb=totalball-totalfacedball;
             targetMessage=team1 + " needs "+te+ " from "+tb;
@@ -92,7 +93,7 @@ app.post("/secgame",(req,res)=>{
                 if(firstbatting=="host"){
                     let temp=noOfplayers-wicket;
                     message=team2 + " won by "+temp+ " wickets.";
-                }else if(firstbatting=="vistor"){
+                }else if(firstbatting=="visitor"){
                     let temp=noOfplayers-wicket;
                     message=team1 + " won by "+temp+ " wickets.";
                 }
@@ -100,7 +101,7 @@ app.post("/secgame",(req,res)=>{
                 if(firstbatting=="host"){
                     let temp=target-score;
                     message=team1 + " won by "+temp+" runs.";
-                }else if(firstbatting=="vistor"){
+                }else if(firstbatting=="visitor"){
                     let temp=target-score;
                     message=team1 + " won by "+temp+ " runs.";
                 }
@@ -110,7 +111,12 @@ app.post("/secgame",(req,res)=>{
     console.log("ball faced   "+totalfacedball);
     console.log("curr over    "+currentOvers);
     console.log("total over   "+overs);
-    res.render("see.ejs", {targetm:targetMessage,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInningsDone:secondInningsDone,secondInningsStarted:secondInningsStarted});
+    if(secondInningsDone===1){
+        // console.log("inside if smt this is second innnings");
+        res.render("end.ejs",{mess:message});
+    }else{
+        res.render("see.ejs", {currentOvers:currentOvers,overs:overs,targetm:targetMessage,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInningsDone:secondInningsDone,secondInningsStarted:secondInningsStarted});
+    }
 });
 app.post("/start",async (req,res)=>{
     currentscore=0,extrasScore=0;
@@ -158,23 +164,29 @@ app.post("/start",async (req,res)=>{
     
     if(firstInningsDone===1){
             secondInnings=1;
-            if(toss==="host" && opted==="bat" || toss==="vistor" && opted==="bowl"){
+            if(toss==="host" && opted==="bat" || toss==="visitor" && opted==="bowl"){
             totalball=overs*6;
             message=team2+" needs "+target+" from "+totalball+" to win.";
             firstbatting="host";
         }
-        else if(toss==="host" && opted==="bowl" || toss==="vistor" && opted==="bat"){
+        else if(toss==="host" && opted==="bowl" || toss==="visitor" && opted==="bat"){
             totalball=overs*6;
             message=team1+" needs "+target+" from "+totalball+" to win.";
-            firstbatting="vistor";
+            firstbatting="visitor";
 
         }
+        console.log("toss  "+toss);
+        console.log("opted "+opted);
+        console.log("bating "+firstbatting);
+        console.log("mess from start  : "+message)
+        console.log("");
+        firstInningsDone=0;
     }
     console.log("correct ball "+ correctBall);
     console.log("curr over "+currentOvers);
 
     console.log("total over "+overs);
-    res.render("started.ejs",{team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInnings:secondInnings})
+    res.render("started.ejs",{target:target,currentOvers:currentOvers,overs:overs,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInnings:secondInnings})
 
 });
 app.post("/game",(req,res)=>{
@@ -185,8 +197,18 @@ app.post("/game",(req,res)=>{
     opted=req.body["opted"];
     overs=parseInt(req.body["overs"]);
     noOfplayers=parseInt(req.body["players"]);
+    currentscore=0,extrasScore=0;
+    score=0;
+    wicket=0;
+    target=0;
+    currentOvers=0;
+    correctBall=0;
+    
     console.log(toss+" " +opted+" " +overs+" " +team1+" " +team2);
     res.render("game.ejs");
+});
+app.get("/last",(req,res)=>{
+    res.render("end.ejs");
 });
 app.get("/Guest_login",(req,res)=>{
     res.render("login.ejs");

@@ -11,6 +11,7 @@
 <body>
     <h1>First Innings</h1>
     <h1> <%= score %> - <%= wicket %> </h1>
+    <h2>Over : <%= currentOvers %> / <%= overs %>  </h2>
     <div class="ballsPlayed"><%= cur%></div>
     <form action="/start" method="post">
         <button name="scoreBtn" value="0">0</button>
@@ -29,12 +30,12 @@
         <form action="secgame" method="post">
            <input type="submit">
         </form>
-    <% } %>
-    <h1><%= alert %></h1>
-    
-    <% if(locals.secondInningsDone===1){ %>
+        <h1>Target :<%= target %></h1>
         <h1><%= alert %></h1>
     <% } %>
+    
+    
+    
 
 </body>
 </html>
