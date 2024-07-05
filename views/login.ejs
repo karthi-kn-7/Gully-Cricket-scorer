@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gully cricket scorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="loginpage.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <form action="game" method="post">
-        <h3>Teams</h3>
-        <input required type="text" name="team1" id="" placeholder="host name">
-        <input required type="text" name="team2" id="" placeholder="visitor name">
-
-        <h3>Toss won by?</h3>
-        <input required id="r1" type="radio" name="forToss" value="host">
-        <label for="r1">Host</label>
-        <input required type="radio" name="forToss" value="visitor" id="r2">
-        <label for="r2">Visitor</label>
-
-        <h3>Opted to?</h3>
-        <input required id="r3" type="radio" name="opted" value="bat">
-        <label for="r3">Bat</label>
-        <input required type="radio" name="opted" value="bowl" id="r4">
-        <label for="r4">Bowl</label>
-
-        <h3>Overs?</h3>
-        <input required type="text" name="overs" id="" placeholder="10">
-        <h3>Number of players in each team ?</h3>
-        <input required type="text" name="players" id="" placeholder="11">
-        <br><br>
-        <input type="submit" value="Start match">
-    </form>
+<body >
+    <div class="myform bg">
+        <div class="child1">
+            <form action="game" method="post">
+                <h3>Teams</h3>
+                <input required type="text" name="team1" id="" placeholder="host name">
+                <input required type="text" name="team2" id="" placeholder="visitor name">
+        
+                <h3>Toss won by?</h3>
+                <input required id="r1" type="radio" name="forToss" value="host">
+                <label for="r1">Host</label>
+                <input required type="radio" name="forToss" value="visitor" id="r2">
+                <label for="r2">Visitor</label>
+        
+                <h3>Opted to?</h3>
+                <input required id="r3" type="radio" name="opted" value="bat">
+                <label for="r3">Bat</label>
+                <input required type="radio" name="opted" value="bowl" id="r4">
+                <label for="r4">Bowl</label>
+        
+                <h3>Overs?</h3>
+                <input required type="text" name="overs" id="" placeholder="10">
+                <h3>Number of players in each team ?</h3>
+                <input required type="text" name="players" id="" placeholder="11">
+                
+                <input class="mya" type="submit" value="Start match">
+            </form>
+        </div>
+    </div>
+    
 </body>
 </html>

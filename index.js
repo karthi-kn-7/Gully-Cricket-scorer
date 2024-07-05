@@ -10,7 +10,7 @@ function setTitle(n1,n2){
 
 const app=express();
 const port=3000;
-
+var batting,sbatting,tn;
 var totalball;
 var message="";
 var currentOvers=0,correctBall=0,score=0,wicket=0;
@@ -88,7 +88,6 @@ app.post("/secgame",(req,res)=>{
     message="";
     
     if(secondInningsDone===1){
-            
             if(score>=target){
                 if(firstbatting=="host"){
                     let temp=noOfplayers-wicket;
@@ -111,11 +110,17 @@ app.post("/secgame",(req,res)=>{
     console.log("ball faced   "+totalfacedball);
     console.log("curr over    "+currentOvers);
     console.log("total over   "+overs);
+    if(batting=="host"){
+        sbatting=team2;
+    }
+    else{
+        sbatting=team1;
+    }
     if(secondInningsDone===1){
         // console.log("inside if smt this is second innnings");
         res.render("end.ejs",{mess:message});
     }else{
-        res.render("see.ejs", {currentOvers:currentOvers,overs:overs,targetm:targetMessage,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInningsDone:secondInningsDone,secondInningsStarted:secondInningsStarted});
+        res.render("see.ejs", {batting:sbatting,balls:correctBall,currentOvers:currentOvers,overs:overs,targetm:targetMessage,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInningsDone:secondInningsDone,secondInningsStarted:secondInningsStarted});
     }
 });
 app.post("/start",async (req,res)=>{
@@ -151,17 +156,19 @@ app.post("/start",async (req,res)=>{
         target=score+1;
     }
 
-    // if(wicket===noOfplayers ){
-    //     firstInningsDone=1;
-    //     console.log("first innings over");
-    // }
-    // if(currentOvers===overs){
-    //     firstInningsDone=1;
-    //     console.log("first innings over");
-    // }
+ 
     message="";
     secondInnings=0;
-    
+
+    if(toss==="host" && opted==="bat" || toss==="visitor" && opted==="bowl"){   
+        batting="host";
+        tn=team1;
+    }
+    else if(toss==="host" && opted==="bowl" || toss==="visitor" && opted==="bat"){ 
+        batting="visitor";
+        tn=team2;
+    }
+
     if(firstInningsDone===1){
             secondInnings=1;
             if(toss==="host" && opted==="bat" || toss==="visitor" && opted==="bowl"){
@@ -186,7 +193,7 @@ app.post("/start",async (req,res)=>{
     console.log("curr over "+currentOvers);
 
     console.log("total over "+overs);
-    res.render("started.ejs",{target:target,currentOvers:currentOvers,overs:overs,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInnings:secondInnings})
+    res.render("started.ejs",{batting:tn,balls:correctBall,target:target,currentOvers:currentOvers,overs:overs,team1:team1,team2:team2,score:score,wicket:wicket,cur:currentscore,alert:message,secondInnings:secondInnings})
 
 });
 app.post("/game",(req,res)=>{

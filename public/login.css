@@ -1,0 +1,93 @@
+
+#wholee{
+    margin: 0;
+    max-width: 100%;
+    /* height: 100vh; */
+    padding: 0;
+}
+ul {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+li::before{
+    content: "⚾ ";
+}
+
+.mybody{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+
+    margin: 0;
+    padding: 0;
+    
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal; 
+    background-color:#E0FBE2 ;
+    
+}
+
+.textfont{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+.mya{
+   text-decoration: none;
+   margin: 10px;
+   background-color: transparent;
+   border-style: solid;
+   border-radius: 12px;
+   padding: 10px;
+   text-align: center;
+   background-color: green;
+   border-color: green;
+
+}
+.mya {
+    color: white; /* Default color for links */
+}
+
+.mya:visited {
+    color: white; /* Same color as the default to prevent color change */
+}
+
+.mya:hover {
+    color: green; /* Color when hovered over */
+    background-color: white;
+}
+
+.mya:active {
+    color: green; /* Color when active (clicked) */
+}
+
+li{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style:normal;
+
+}
+.myimg{
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+}
+.container{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.child1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+.atag{
+    margin: 20px;
+}
