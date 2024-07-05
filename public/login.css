@@ -68,6 +68,7 @@ li{
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style:normal;
+    color: #508D4E;
 
 }
 .myimg{
@@ -90,4 +91,13 @@ li{
 }
 .atag{
     margin: 20px;
+}
+h1,h3{
+    color: #1A5319;
+}
+.class1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

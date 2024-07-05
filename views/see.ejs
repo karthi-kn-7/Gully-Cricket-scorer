@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=team1%> vs <%= team2 %> </title>
-    <style>
+    <link rel="stylesheet" href="/started.css">
 
-    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Second Innings( <%=batting%>'s team batting )</h1>
+    <div class="container">
+        <div>
+            <h1>Second Innings( <%=batting%>'s team batting )</h1>
     <h2><%= targetm %></h2>
     <h1> <%= score %> - <%= wicket %> </h1>
     <h2>Over : <%= currentOvers %>.<%=balls%> / <%= overs %>  </h2>
-    <div class="ballsPlayed"><%= cur%></div>
+    <h2 class="ballsPlayed"><%= cur%></h2>
     <form action="/secgame" method="post">
-        <button name="scoreBtn" value="0">0</button>
-        <button name="scoreBtn" value="1">1</button>
-        <button name="scoreBtn" value="2">2</button>
-        <button name="scoreBtn" value="3">3</button>
-        <button name="scoreBtn" value="4">4</button>
-        <button name="scoreBtn" value="5">5</button>
-        <button name="scoreBtn" value="6">6</button>
-        <button name="extrasBtn" value="1">wide</button>
-        <button name="extrasBtn" value="1">noball</button>
-        <button name="out" value="out">Wicket</button>
-        
+        <div>
+    
+            <button class="mya" name="scoreBtn" value="0">0</button>
+            <button class="mya" name="scoreBtn" value="1">1</button>
+            <button class="mya" name="scoreBtn" value="2">2</button>
+            <button class="mya" name="scoreBtn" value="3">3</button>
+            <button class="mya" name="scoreBtn" value="4">4</button>
+        </div>
+
+        <div>
+            <button class="mya" name="scoreBtn" value="5">5</button>
+            <button class="mya" name="scoreBtn" value="6">6</button>
+            <button class="mya" name="extrasBtn" value="wide">wide</button>
+            <button class="mya" name="extrasBtn" value="noball">noball</button>
+            <button class="mya" name="out" value="out">Wicket</button>
+            
+        </div>
     </form>
     
     
@@ -37,5 +44,8 @@
         <h1><%= alert %></h1>
     <% } %>
 
+        </div>
+    </div>
+    
 </body>
 </html>

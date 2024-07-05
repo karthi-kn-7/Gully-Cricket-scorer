@@ -41,10 +41,10 @@ app.post("/secgame",(req,res)=>{
         extrasScore=0;
     }
     
-    if(!isNaN(parseInt(req.body["extrasBtn"]))){
-        extrasScore=parseInt(req.body["extrasBtn"]);
-        score+=extrasScore;
-    }
+    // if(!isNaN(parseInt(req.body["extrasBtn"]))){
+    //     extrasScore=parseInt(req.body["extrasBtn"]);
+    //     score+=extrasScore;
+    // }
     if(!isNaN(parseInt(req.body["scoreBtn"]))){
         currentscore=parseInt(req.body["scoreBtn"]);
         score+=currentscore;
@@ -54,6 +54,7 @@ app.post("/secgame",(req,res)=>{
     
     if(req.body["out"]=="out"){
         correctBall++;
+        currentscore='W';
         totalfacedball++;
         wicket++;
         if(wicket===noOfplayers ){
@@ -61,6 +62,15 @@ app.post("/secgame",(req,res)=>{
             console.log("second innings over");
         }
     }
+    if(req.body["extrasBtn"]=="wide"){
+        currentscore="wide";
+        score+=1;
+    }
+    if(req.body["extrasBtn"]=="noball"){
+        currentscore="NB";
+        score+=1;
+    }
+
     if(correctBall===6){
         currentOvers++;
         correctBall=0;
@@ -126,10 +136,10 @@ app.post("/secgame",(req,res)=>{
 app.post("/start",async (req,res)=>{
     currentscore=0,extrasScore=0;
     
-    if(!isNaN(parseInt(req.body["extrasBtn"]))){
-        extrasScore=parseInt(req.body["extrasBtn"]);
-        score+=extrasScore;
-    }
+    // if(!isNaN(parseInt(req.body["extrasBtn"]))){
+    //     extrasScore=parseInt(req.body["extrasBtn"]);
+    //     score+=extrasScore;
+    // }
     if(!isNaN(parseInt(req.body["scoreBtn"]))){
         currentscore=parseInt(req.body["scoreBtn"]);
         score+=currentscore;
@@ -137,6 +147,7 @@ app.post("/start",async (req,res)=>{
     }
     
     if(req.body["out"]=="out"){
+        currentscore="W";
         correctBall++;
         wicket++;
         if(wicket===noOfplayers ){
@@ -144,6 +155,15 @@ app.post("/start",async (req,res)=>{
             console.log("first innings over");
         }
     }
+    if(req.body["extrasBtn"]=="wide"){
+        currentscore="wide";
+        score+=1;
+    }
+    if(req.body["extrasBtn"]=="noball"){
+        currentscore="NB";
+        score+=1;
+    }
+    
     if(correctBall===6){
         currentOvers++;
         correctBall=0;
@@ -213,6 +233,9 @@ app.post("/game",(req,res)=>{
     
     console.log(toss+" " +opted+" " +overs+" " +team1+" " +team2);
     res.render("game.ejs");
+});
+app.get("/instruction",(req,res)=>{
+    res.render("instruct.ejs");
 });
 app.get("/last",(req,res)=>{
     res.render("end.ejs");

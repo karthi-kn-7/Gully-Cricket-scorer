@@ -1,0 +1,79 @@
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal; 
+    background-color:#E0FBE2 ;
+}
+h1,h2{
+    color: #1A5319;
+}
+
+.mya{
+    text-decoration: none;
+    margin: 10px;
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 50%;
+    padding: 15px;
+    text-align: center;
+    background-color: green;
+    border-color: green;
+    width: 70px;
+    height: 70px;
+ 
+ }
+ .mya {
+     color: white; /* Default color for links */
+ }
+ 
+ .mya:visited {
+     color: white; /* Same color as the default to prevent color change */
+ }
+ 
+ .mya:hover {
+     color: green; /* Color when hovered over */
+     background-color: white;
+ }
+ 
+ .mya:active {
+     color: green; /* Color when active (clicked) */
+ }
+ .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ }
+
+
+
+ .myaa{
+    text-decoration: none;
+    margin: 10px 10px 10px 0px;
+    background-color: transparent;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    background-color: green;
+    border-color: green;
+    font-size: large;
+ 
+ }
+ .myaa {
+     color: white; /* Default color for links */
+ }
+ 
+ .myaa:visited {
+     color: white; /* Same color as the default to prevent color change */
+ }
+ 
+ .myaa:hover {
+     color: green; /* Color when hovered over */
+     background-color: white;
+ }
+ 
+ .myaa:active {
+     color: green; /* Color when active (clicked) */
+ }
+ 
