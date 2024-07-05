@@ -112,7 +112,7 @@ app.post("/secgame",(req,res)=>{
                     message=team1 + " won by "+temp+" runs.";
                 }else if(firstbatting=="visitor"){
                     let temp=target-score;
-                    message=team1 + " won by "+temp+ " runs.";
+                    message=team2 + " won by "+temp+ " runs.";
                 }
             }
     }
@@ -243,7 +243,7 @@ app.get("/last",(req,res)=>{
 app.get("/Guest_login",(req,res)=>{
     res.render("login.ejs");
 });
-app.get("",(req,res)=>{
+app.get("/",(req,res)=>{
     res.render("home.ejs");
 });
 app.listen(port,()=>{
