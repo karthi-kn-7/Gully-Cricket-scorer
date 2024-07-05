@@ -19,7 +19,10 @@ var target=0;
 var secondInningsDone=0;
 var noOfplayers,toss,opted,overs,team1,team2,team1player,team2player,team1score=0,team2score=0;
 app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(express.static("public"));
+
+
 var secondInnings;
 var currentscore=0,extrasScore=0;
 
