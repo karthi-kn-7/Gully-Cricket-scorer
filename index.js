@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { dirname , join } from "path";
 import { render } from "ejs";
 
+const __dirname=dirname(fileURLToPath(import.meta.url));
 
 const app=express();
 const port=process.env.PORT || 3000;
@@ -16,13 +17,16 @@ var totalfacedball=0;
 var firstbatting;
 var target=0;
 var secondInningsDone=0;
-const __dirname=dirname(fileURLToPath(import.meta.url));
 var noOfplayers,toss,opted,overs,team1,team2,team1player,team2player,team1score=0,team2score=0;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 var secondInnings;
 var currentscore=0,extrasScore=0;
-app.set('view endine','ejs');
+
+
+app.set('views', join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.post("/secgame",(req,res)=>{
     var secondInningsStarted=0;
     if(secondInnings===1){
