@@ -4,12 +4,9 @@ import { fileURLToPath } from "url";
 import { dirname , join } from "path";
 import { render } from "ejs";
 
-function setTitle(n1,n2){
-    
-}
 
 const app=express();
-const port=process.env.PORT ||3000;
+const port=3000;
 var batting,sbatting,tn;
 var totalball;
 var message="";
@@ -25,6 +22,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 var secondInnings;
 var currentscore=0,extrasScore=0;
+app.set('view endine','ejs');
 app.post("/secgame",(req,res)=>{
     var secondInningsStarted=0;
     if(secondInnings===1){
